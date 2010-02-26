@@ -1,5 +1,19 @@
-/**
-* @author NicBell - using Mootools 1.2.+
+/*
+---
+description:  Generics.Collection and Generics Mixin for Classes.
+
+license: MIT-style
+
+authors:
+- Nic Bell
+
+
+requires:
+- core/1.2.4: '*'
+
+provides: [Generics, Generics.Collection]
+
+...
 */
 
 /* Typed collections - Hash.findKey by http://mcarthurgfx.com/blog/article/get-class-of-an-instance */
