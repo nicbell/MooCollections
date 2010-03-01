@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Collections</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>
+    <script type="text/javascript" src="../Source/Collections.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+        /* Usage */
+        var Pig = new Class({
+            Implements: Generics
+        });
+
+        var Cow = new Class({
+            Implements: Generics
+        });
+
+        var pigs = new Generics.Collection('Pig');
+        pigs.add(new Pig());
+        pigs.add(new Cow()); //Type exception: item of incorrect type. - Cow
+    /*]]>*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

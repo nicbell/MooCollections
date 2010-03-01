@@ -57,15 +57,3 @@ Generics.Collection = function(type) {
 /* Ends */
 
 
-/* Usage */
-var Pig = new Class({
-    Implements: Generics
-});
-
-var Cow = new Class({ 
-    Implements: Generics
-});
-
-var pigs = new Generics.Collection('Pig');
-pigs.add(new Pig());
-pigs.add(new Cow()); //Type exception: item of incorrect type. - Cow
