@@ -9,8 +9,7 @@ How to use
 ----------
 
 All we need to do is create a new 'Collection' of a specific type. Great when working with different kinds of data.
-Use new Generics.Collection.add(item) to add.
-and use new Generics.Collection.remove(item) to remove.
+Use Generics.Collection.add(item) to add and use Generics.Collection.remove(item) to remove.
 
 JS:
 
