@@ -7,17 +7,26 @@
     <script type="text/javascript">
     /*<![CDATA[*/
         /* Usage */
-        var Pig = new Class({
-            Implements: Generics
-        });
+        var Pig = new Class();
+        var BetterPig = new Class({ Extends: Pig });
+        var Cow = new Class();
 
-        var Cow = new Class({
-            Implements: Generics
-        });
+        var pigs = new Generics.Collection(Pig); //pass class
+        var fakePigs = new Generics.FakeCollection(Pig); //pass class
 
-        var pigs = new Generics.Collection('Pig');
+        pigs.add(1); //Type exception: item is not an object.
+        pigs.add(new Cow()); //Type exception: item of incorrect type.
         pigs.add(new Pig());
-        pigs.add(new Cow()); //Type exception: item of incorrect type. - Cow
+        pigs.add(new BetterPig());
+
+        alert(pigs.length); //2 everywhere, 0 IE6
+        
+        fakePigs.add(1); //Type exception: item is not an object.
+        fakePigs.add(new Cow()); //Type exception: item of incorrect type.
+        fakePigs.add(new Pig());
+        fakePigs.add(new BetterPig());
+
+        alert(fakePigs.length); //2 everywhere, 0 IE6    
     /*]]>*/
     </script>
 </head>
