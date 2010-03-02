@@ -8,13 +8,21 @@ Generic typed collections for Mootools.
 How to use
 ----------
 
-All we need to do is create classes that implement 'Generics' then we create a new 'Collection' of a specific type. Great when working with different kinds of data.
+All we need to do is create a new 'Collection' of a specific type. Great when working with different kinds of data.
+Use new Generics.Collection.add(item) to add.
+and use new Generics.Collection.remove(item) to remove.
 
 JS:
 
-	var Pig = new Class({ Implements: Generics });
-	var Cow = new Class({ Implements: Generics });
+	var Pig = new Class();
+    var Piglet = new Class({ Extends: Pig });
+    var Cow = new Class();
 
-	var pigs = new Generics.Collection('Pig');
-	pigs.add(new Pig());
-	pigs.add(new Cow()); //Type exception: item of incorrect type. - Cow
+    var pigs = new Generics.Collection(Pig); //pass class
+
+    pigs.add(new Pig());
+    pigs.add(new Piglet());
+    pigs.add(1); //Type exception: item is not an object.
+    pigs.add(new Cow()); //Type exception: item of incorrect type.
+
+    alert(pigs.length); //2

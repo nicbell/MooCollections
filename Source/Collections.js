@@ -1,12 +1,11 @@
 /*
 ---
-description:  Generics.Collection extends array to only accept items of a specific type.
+description:  Generics.Collection implements functions into array to only accept items of a specific type, would have prefered to simply extend Array but Array does not like being extended in IE6.
 
 license: MIT-style
 
 authors:
 - Nic Bell
-- Kevin Chapelier
 
 requires:
 core/1.2.4:
@@ -20,42 +19,22 @@ provides: [Generics.Collection]
 
 var Generics = {
 
-    Collection: new Class({
-        Extends: Array,
-        initialize: function(type) {
-            this.type = type;
-        },
-        push: function(item) {
-            if ($type(item) == 'object') {
-                if (item instanceof this.type) this.parent(item);
-                else alert('Type exception: item of incorrect type.');
-            }
-            else {
-                alert('Type exception: item is not an object.');
-            }
-        },
-        /* for compatiblity with 0.5 and because every other language uses add & remove on collections */
-        add: function(item) { this.push(item); },
-        remove: function(item) { this.erase(item); }
-    }),
-
-    FakeCollection: function(type) {
+    Collection: function(type) {
+        //Would have prefered to extend Array but IE6 does not like this
         var Collection = Array;
         Collection.implement({
             type: type,
             add: function(item) {
                 if ($type(item) == 'object') {
-                    if (item instanceof this.type)
-                        this.push(item);
-                    else
-                        alert('Type exception: item of incorrect type.');
+                    if (item instanceof this.type) this.include(item);
+                    else alert('Type exception: item of incorrect type. - Collection.js:ln30');
                 }
                 else {
-                    alert('Type exception: item is not an object.');
+                    alert('Type exception: item is not an object. - Collection.js:ln33');
                 }
+                return this;
             },
-            /* for compatiblity with 0.5 and because every other language uses add & remove on collections */
-            remove: function(item) { this.erase(item); }
+            remove: function(item) { this.erase(item); return this; }
         });
         return new Collection();
     }
